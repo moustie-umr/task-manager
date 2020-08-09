@@ -1,11 +1,7 @@
-import { ADD_TODO, TOGGLE_TODO, DELETE_TODO } from './actionTypes'
+import { ADD_TODO, UPDATE_TODO, DELETE_TODO } from './actionTypes'
 
 const initialTodoState = {
-    data: [{
-        id: 1,
-        text: 'text',
-        completed: false
-    }]
+    data: []
 }
 
 export const TodoStateReducer = (state = initialTodoState, action) => {
@@ -20,7 +16,38 @@ export const TodoStateReducer = (state = initialTodoState, action) => {
                 }
             )
         }
-        
+
+        case DELETE_TODO: {
+            let todos = [...state.data];
+            let itemIndex = todos.findIndex(todo => todo.id === action.payload);
+            console.log(itemIndex)
+            if (itemIndex > -1) {
+                todos.splice(itemIndex, 1);
+            }
+            return (
+                {
+                    ...state,
+                    data: todos
+                }
+            )
+        }
+        case UPDATE_TODO: {
+            let todos = [...state.data];
+            let itemIndex = todos.findIndex(todo => todo.id === action.payload.id);
+            if (itemIndex > -1) {
+                todos[itemIndex] = {
+                    ...todos[itemIndex],
+                    ...action.payload.data
+                }
+            }
+            return (
+                {
+                    ...state,
+                    data: todos
+                }
+            )
+        }
+
         default: {
             return state
         }

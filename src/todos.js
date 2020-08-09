@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addTodo, } from './redux/actions';
+import { addTodo, deleteTodo, changeTodoStatus } from './redux/actions';
 import TodoListItem from './components/todoListItem'
 import AddTodo from './components/addTodo'
 import { TodoStateReducer } from './redux/reducers';
-
 
 class Todos extends Component {
     constructor(props) {
@@ -17,7 +16,7 @@ class Todos extends Component {
         console.log(lastItem)
 
         this.props.addTodo({
-            id: lastItem.id + 1,
+            id: lastItem ? lastItem.id + 1 : 1,
             text,
             completed: false,
         });
@@ -25,13 +24,18 @@ class Todos extends Component {
 
     render() {
         const { todos } = this.props; // todos will automatically be here
-        // console.log();
+        // console.log(todos);
         return (
             <div>
                 <AddTodo onAddItem={this.onAddItem} />
                 <ul>
                     {todos.map((item, index) => (
-                        <TodoListItem key={index} todo={item} />
+                        <TodoListItem
+                            key={index}
+                            todo={item}
+                            onDelete={this.props.deleteTodo}
+                            onStatusChange={this.props.changeTodoStatus}
+                        />
                     ))}
                 </ul>
             </div>
@@ -39,13 +43,10 @@ class Todos extends Component {
     }
 }
 
-
 const mapStateToProps = ({ TodoStateReducer }) => {
-    // console.log(TodoStateReducer.data)
     return {
         todos: TodoStateReducer.data,
     };
 };
 
-export default connect(mapStateToProps, { addTodo })(Todos);
-
+export default connect(mapStateToProps, { addTodo, deleteTodo, changeTodoStatus })(Todos);

@@ -10,6 +10,7 @@ function AddTodo({ onAddItem }) {
             <input type="text" onChange={(e) => setValue(e.target.value)} value={value} placeholder="You text here" />
             <button onClick={() => {
                 onAddItem(value);
+                setValue('')
             }} type="button"> Add Item</button>
         </div>
     )

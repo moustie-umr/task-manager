@@ -1,16 +1,16 @@
 import React from 'react';
 
-const TodoListItem = ({ todo }) => {
+const TodoListItem = ({ todo, onDelete, onStatusChange }) => {
 
     const { id, text, completed } = todo;
 
     return (
         <li >
-            <input type="checkbox" checked={completed} onChange={() => {}}/>
+            <input type="checkbox" checked={completed} onChange={() => onStatusChange(id, { completed: !completed })} />
 
-            <input type="text" placeholder='task' value={text} onChange={() => {}}/>
+            <input type="text" placeholder='task' value={text} onChange={(e) => onStatusChange(id, { text: e.target.value }) } />
 
-            <button>Delete</button>
+            <button onClick={() => onDelete(id)}>Delete</button>
         </li>
     )
 }
