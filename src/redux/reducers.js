@@ -20,7 +20,7 @@ export const TodoStateReducer = (state = initialTodoState, action) => {
         case DELETE_TODO: {
             let todos = [...state.data];
             let itemIndex = todos.findIndex(todo => todo.id === action.payload);
-            console.log(itemIndex)
+
             if (itemIndex > -1) {
                 todos.splice(itemIndex, 1);
             }
@@ -31,6 +31,7 @@ export const TodoStateReducer = (state = initialTodoState, action) => {
                 }
             )
         }
+
         case UPDATE_TODO: {
             let todos = [...state.data];
             let itemIndex = todos.findIndex(todo => todo.id === action.payload.id);

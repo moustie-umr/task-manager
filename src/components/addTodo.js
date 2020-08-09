@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
-// import { connect } from 'react-redux'
-// import { addTodo } from '../redux/actions'
+
 
 function AddTodo({ onAddItem }) {
     const [value, setValue] = useState('');
-
+    
     return (
         <div>
-            <input type="text" onChange={(e) => setValue(e.target.value)} value={value} placeholder="You text here" />
+            <input type="text" onChange={(e) => setValue(e.target.value)} value={value} placeholder="Enter todo here" />
             <button onClick={() => {
                 onAddItem(value);
                 setValue('')

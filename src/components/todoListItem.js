@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const TodoListItem = ({ todo, onDelete, onStatusChange }) => {
 
@@ -8,7 +8,7 @@ const TodoListItem = ({ todo, onDelete, onStatusChange }) => {
         <li >
             <input type="checkbox" checked={completed} onChange={() => onStatusChange(id, { completed: !completed })} />
 
-            <input type="text" placeholder='task' value={text} onChange={(e) => onStatusChange(id, { text: e.target.value }) } />
+            <input type="text" placeholder='task' value={text} onChange={(e) => onStatusChange(id, { text: e.target.value })} />
 
             <button onClick={() => onDelete(id)}>Delete</button>
         </li>
