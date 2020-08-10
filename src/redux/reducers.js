@@ -1,4 +1,4 @@
-import { ADD_TODO, UPDATE_TODO, DELETE_TODO } from './actionTypes'
+import { ADD_TODO, UPDATE_TODO, DELETE_TODO } from './actionTypes';
 
 const initialTodoState = {
     data: []

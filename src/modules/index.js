@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import { addTodo, deleteTodo, updateTodo } from './redux/actions'
-import TodoListItem from './components/todoListItem'
-import AddTodo from './components/addTodo'
-import { TodoStateReducer } from './redux/reducers'
+import { addTodo, deleteTodo, updateTodo } from '../redux/actions';
+import TodoListItem from '../components/todoListItem';
+import AddTodo from '../components/addTodo';
+import { TodoStateReducer } from '../redux/reducers';
 
 
 class Todos extends Component {
 
     
     onAddItem = (text) => {
-        // Get last id
+        // Get id of last item
         const [lastItem] = this.props.todos.slice(-1);
  
 
@@ -24,7 +24,7 @@ class Todos extends Component {
 
     render() {
         const { todos } = this.props; 
-        // Todo form and list will automatically be here
+        // Todo form and list will automatically display here
         return (
             <div>
                 <AddTodo onAddItem={this.onAddItem} />

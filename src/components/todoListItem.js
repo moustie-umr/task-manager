@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 const TodoListItem = ({ todo, onDelete, onStatusChange }) => {
 
     const { id, text, completed } = todo;
-
+    // todos item list
     return (
         <li >
             <input type="checkbox" checked={completed} onChange={() => onStatusChange(id, { completed: !completed })} />
